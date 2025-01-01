@@ -136,7 +136,7 @@ window.addEventListener("resize", updateTextForDevice);
         }
 
 
-    }, 10)
+    }, 
 setInterval(function () {
 // leaderboard green bar
 var leaderboard = document.getElementsByClassName("app--sidepanel-open")[0];
@@ -608,4 +608,4 @@ if (leaderboard != null) {
       }
     }
   }
-}, 1000);
+}, 
