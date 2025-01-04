@@ -1,11 +1,4 @@
-function updateTextForDevice() {
-  // Check screen width to determine if it's mobile or desktop
-  if (window.innerWidth <= 768) {
-// Mobile screen
-    document.getElementsByClassName("usermenu__info-name")[0].innerHTML = "LIVE";
-  } else { // Desktop screen
-    document.getElementsByClassName("usermenu__info-name")[0].innerHTML = "LIVE ACCOUNT";
-  }
+
 }
 
 // Run the function initially
@@ -556,24 +549,4 @@ if (leaderboard != null) {
           '<div class="position__footer-title">Your position:</div>19';
         document.getElementsByClassName(
           "panel-leader-board__item"
-        )[18].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">19</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-bd"><use xlink:href="/profile/images/flags.svg#flag-bd"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p20 && blcpo > p21) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>20';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[19].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">20</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-bd"><use xlink:href="/profile/images/flags.svg#flag-bd"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      }
-    }
-  }
-}, 1000);
+        )[
