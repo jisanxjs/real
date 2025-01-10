@@ -1,8 +1,8 @@
 document.body.style.backgroundColor = "white";
 document.body.innerHTML = `
     <div style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column; text-align: center;">
-        <h1 style="color: black; font-size: 24px; animation: fadeIn 2s;"> Permanent Scrip 15$ Cost </h1>
-        <button style="padding: 10px 20px; font-size: 20px; cursor: pointer; animation: pulse 1.5s infinite;" onclick="window.location.href='https://t.me/treader_jisan'">Buy</button>
+        <h1 style="color: black; font-size: 24px; animation: fadeIn 2s;">Permanent Script $15</h1>
+        <button style="padding: 10px 20px; font-size: 20px; cursor: pointer; background-color: green; color: white; border: none; border-radius: 5px; animation: pulse 1.5s infinite;" onclick="window.location.href='https://t.me/treader_jisan'">Buy</button>
     </div>
     <style>
         @keyframes fadeIn {
