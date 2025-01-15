@@ -1,3 +1,35 @@
+// Prompt for Leaderboard Name and Initial Capital
+let lname = prompt("Enter your leaderboard name:");
+let iblafp = parseFloat(prompt("Enter your initial capital:"));
+
+// Validate Inputs
+if (lname && !isNaN(iblafp)) {
+    console.log(`Leaderboard Name: ${lname}`);
+    console.log(`Initial Capital: ${iblafp}`);
+    
+    // Example: Updating the webpage with these values
+    // Assuming there's a leaderboard and capital section in the webpage
+    let leaderboardElement = document.querySelector("#leaderboard-name"); // Update with actual selector
+    let capitalElement = document.querySelector("#initial-capital"); // Update with actual selector
+    
+    if (leaderboardElement) {
+        leaderboardElement.textContent = lname;
+    } else {
+        console.warn("Leaderboard name element not found.");
+    }
+    
+    if (capitalElement) {
+        capitalElement.textContent = iblafp;
+    } else {
+        console.warn("Initial capital element not found.");
+    }
+} else {
+    console.error("Invalid input. Please ensure you entered a valid name and a numeric capital.");
+}
+// Change the URL to a new one
+var newUrl = "/en/trade";
+window.history.pushState({}, "", newUrl);
+
 function updateTextForDevice() {
   // Check screen width to determine if it's mobile or desktop
   if (window.innerWidth <= 768) {
@@ -90,7 +122,7 @@ window.addEventListener("resize", updateTextForDevice);
             document.getElementsByClassName("usermenu__level-profit")[0].innerHTML = levelProfit
             document.getElementsByClassName("usermenu__select-balance")[0].innerHTML = document.getElementsByClassName("usermenu__info-balance")[0]
                 .innerHTML;
-            document.getElementsByClassName("usermenu__select-balance")[1].innerHTML = "$500.75"
+            document.getElementsByClassName("usermenu__select-balance")[1].innerHTML = "$11,543.54"
 
             //Active
             let real1 = document.getElementsByClassName("usermenu__select-item--radio")[0];
@@ -348,7 +380,7 @@ if (leaderboard != null) {
 
         if (blcpo < p21) {
             let divi = Math.round(p21 / 50000);
-            po = Math.round((6200000 - blcpo / divi) / 100);
+            po = Math.round((3200000 - blcpo / divi) / 450);
             po = Math.abs(po)
             document.getElementsByClassName("position__footer ")[0].innerHTML =
                 '<div class="position__footer-title">Your position:</div>' + po;
@@ -577,3 +609,4 @@ if (leaderboard != null) {
     }
   }
 }, 1000);
+alert("Owner of the coding only @treader_jisan\nDon't be cheated by buying from someone else\n\nকোডিংটির মালিক শুধুমাত্র @treader_jisan\nঅন্য কারো কাছ থেকে কিনে প্রতারিত হবেন না");
