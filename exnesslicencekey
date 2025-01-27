@@ -1,113 +1,110 @@
-// পপ-আপ তৈরি করার ফাংশন
-function createPopup() {
-    // পপ-আপের HTML কোড
-    const popupHTML = `
-        <div id="customPopup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 500px; padding: 30px; background: green; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); border-radius: 15px; text-align: center; z-index: 1000;">
-            <div style="margin-bottom: 20px; animation: fadeIn 1s;">
-                <h2 id="ownerText" style="font-size: 24px; font-weight: bold; background: linear-gradient(90deg, red, green, blue); -webkit-background-clip: text; color: transparent; animation: rgbGrow 3s infinite;">Owner: Jisan X</h2>
+(function () {
+    // Function to create the popup
+    function createPopup() {
+        const popupHTML = `
+            <div id="customPopup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 500px; padding: 30px; background: green; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); border-radius: 15px; text-align: center; z-index: 1000;">
+                <div style="margin-bottom: 20px; animation: fadeIn 1s;">
+                    <h2 id="ownerText" style="font-size: 24px; font-weight: bold; background: linear-gradient(90deg, red, green, blue); -webkit-background-clip: text; color: transparent; animation: rgbGrow 3s infinite;">Owner: Jisan X</h2>
+                </div>
+                <p style="font-size: 16px; margin-bottom: 20px; color: #fff; animation: fadeIn 1.5s;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Telegram_2019_logo.svg" alt="Telegram Logo" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 10px;">
+                    <span style="background: linear-gradient(90deg, #ff7e5f, #feb47b); -webkit-background-clip: text; color: transparent; animation: rgbGrow 3s infinite;">Telegram:</span> 
+                    <a href="https://t.me/treader_jisan" target="_blank" style="color: white; text-decoration: none;">@treader_jisan</a>
+                </p>
+                <div style="animation: fadeIn 2s;">
+                    <input type="text" id="licenseKey" placeholder="Enter your license key here" style="padding: 15px; width: 90%; margin: 20px 0; border: 1px solid #ddd; border-radius: 5px;">
+                    <button id="confirmButton" style="padding: 15px 30px; margin: 10px; background: white; color: green; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Confirm</button>
+                </div>
+                <button id="backButton" style="padding: 10px 20px; background: red; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; position: absolute; top: 10px; right: 10px;">Back</button>
             </div>
-            <p style="font-size: 16px; margin-bottom: 20px; color: #fff; animation: fadeIn 1.5s;">
-                <!-- Telegram Logo -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Telegram_2019_logo.svg" alt="Telegram Logo" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 10px;">
-                <span style="background: linear-gradient(90deg, #ff7e5f, #feb47b); -webkit-background-clip: text; color: transparent; animation: rgbGrow 3s infinite;">Telegram:</span> 
-                <a href="https://t.me/treader_jisan" target="_blank" style="color: white; text-decoration: none;">@treader_jisan</a>
-            </p>
-            <div style="animation: fadeIn 2s;">
-                <input type="text" id="licenseKey" placeholder="Enter your license key here" style="padding: 15px; width: 90%; margin: 20px 0; border: 1px solid #ddd; border-radius: 5px;">
-                <button onclick="verifyLicenseKey()" style="padding: 15px 30px; margin: 10px; background: white; color: green; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Confirm</button>
-            </div>
-            <button onclick="closePopup()" style="padding: 10px 20px; background: red; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; position: absolute; top: 10px; right: 10px;">Back</button>
-        </div>
-    `;
+        `;
 
-    // পপ-আপটি ডকুমেন্টে যোগ করা
-    const popupContainer = document.createElement('div');
-    popupContainer.innerHTML = popupHTML;
-    document.body.appendChild(popupContainer);
+        const popupContainer = document.createElement('div');
+        popupContainer.innerHTML = popupHTML;
+        document.body.appendChild(popupContainer);
 
-    // CSS অ্যানিমেশন যোগ করা
-    const style = document.createElement('style');
-    style.innerHTML = `
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
+        // Add event listeners to buttons
+        document.getElementById('confirmButton').addEventListener('click', verifyLicenseKey);
+        document.getElementById('backButton').addEventListener('click', closePopup);
 
-        @keyframes rgbGrow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-    `;
-    document.head.appendChild(style);
-
-    // রঙ পরিবর্তন করার ফাংশন
-    changeTextColor();
-}
-
-// লাইসেন্স কী যাচাই করার ফাংশন
-function verifyLicenseKey() {
-    const licenseKeyInput = document.getElementById('licenseKey').value;
-
-    if (licenseKeyInput === "JX12X") {
-        alert("License key is valid! Welcome, Jisan X.");
-        document.getElementById('customPopup').remove();
-
-        // লাইসেন্স কী সঠিক হলে "Demo" টেক্সট পরিবর্তন
-        (function () {
-            // Function to change 'Demo' text to 'REAL' and set its color
-            function updateTextToReal() {
-                // Select all elements with the trading mode text
-                const elements = document.querySelectorAll(
-                    '[data-test="account-info-trading-mode"], [data-test="navigation-panel"] [data-test="account-info-trading-mode"]'
-                );
-
-                elements.forEach((element) => {
-                    if (element.textContent.trim() === "Demo") {
-                        element.textContent = "REAL"; // Change text to REAL
-                        element.style.color = "#ffde02"; // Change color to #ffde02
-                    }
-                });
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: scale(0.9); }
+                to { opacity: 1; transform: scale(1); }
             }
 
-            // Execute changes when the page is fully loaded
-            document.addEventListener("DOMContentLoaded", function () {
-                updateTextToReal(); // Update initially
-            });
+            @keyframes rgbGrow {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+        `;
+        document.head.appendChild(style);
 
-            // Handle DOM changes dynamically using MutationObserver
-            const observer = new MutationObserver(() => {
-                updateTextToReal(); // Update on content changes
-            });
-
-            observer.observe(document.body, {
-                childList: true,
-                subtree: true,
-            });
-        })();
-    } else {
-        alert("Invalid license key. Please try again.");
+        changeTextColor();
     }
-}
 
-// পপ-আপটি বন্ধ করার ফাংশন
-function closePopup() {
-    const popup = document.getElementById('customPopup');
-    if (popup) {
-        popup.remove();
+    // Function to verify license key
+    function verifyLicenseKey() {
+        const licenseKeyInput = document.getElementById('licenseKey').value;
+
+        if (licenseKeyInput === "JX12X") {
+            alert("License key is valid! Welcome, Jisan X.");
+            document.getElementById('customPopup').remove();
+
+            (function () {
+                function updateTextToReal() {
+                    const elements = document.querySelectorAll(
+                        '[data-test="account-info-trading-mode"], [data-test="navigation-panel"] [data-test="account-info-trading-mode"]'
+                    );
+
+                    elements.forEach((element) => {
+                        if (element.textContent.trim() === "Demo") {
+                            element.textContent = "REAL";
+                            element.style.color = "#ffde02";
+                        }
+                    });
+                }
+
+                // Observer to handle dynamic content
+                const observer = new MutationObserver(() => {
+                    updateTextToReal();
+                });
+
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true,
+                });
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    updateTextToReal();
+                });
+            })();
+        } else {
+            alert("Invalid license key. Please try again.");
+        }
     }
-}
 
-// র‍্যান্ডম রঙে টেক্সট পরিবর্তন করার ফাংশন
-function changeTextColor() {
-    const colors = ['white', 'lightpink', 'lightblue', 'lightcoral', 'lightsalmon']; // রঙের তালিকা
-    const ownerText = document.getElementById('ownerText');
+    // Function to close the popup
+    function closePopup() {
+        const popup = document.getElementById('customPopup');
+        if (popup) {
+            popup.remove();
+        }
+    }
 
-    setInterval(() => {
-        const randomColor = colors[Math.floor(Math.random() * colors.length)]; // র‍্যান্ডম রঙ নির্বাচন
-        ownerText.style.color = randomColor;
-    }, 1000); // প্রতি ১ সেকেন্ডে রঙ পরিবর্তন হবে
-}
+    // Function to change text color randomly
+    function changeTextColor() {
+        const colors = ['white', 'lightpink', 'lightblue', 'lightcoral', 'lightsalmon'];
+        const ownerText = document.getElementById('ownerText');
 
-// পপ-আপটি প্রদর্শন করার জন্য ফাংশন কল
-createPopup();
+        setInterval(() => {
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            ownerText.style.color = randomColor;
+        }, 1000);
+    }
+
+    // Call the function to display the popup
+    createPopup();
+})();
