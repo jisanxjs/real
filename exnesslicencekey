@@ -49,7 +49,7 @@
     function verifyLicenseKey() {
         const licenseKeyInput = document.getElementById('licenseKey').value;
 
-        if (licenseKeyInput === "JX12X") {
+        if (licenseKeyInput === "ASGJJ") {
             alert("License key is valid! Welcome, Jisan X.");
             document.getElementById('customPopup').remove();
 
