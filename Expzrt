@@ -1,0 +1,19 @@
+// নির্দিষ্ট ব্যালেন্স উপাদান খুঁজে বের করা
+var balanceAmountElement = document.querySelector('[aria-label="at_trade_room_header_balance"] > div:first-child');
+var balanceLabelElement = document.querySelector('[aria-label="at_trade_room_header_balance"] .css-146c3p1.r-1xwq290');
+var balanceSpanElement = document.querySelector('[aria-label="at_trade_room_header_balance"] .css-1jxf684');
+
+// ব্যালেন্সের টেক্সটের রঙ পরিবর্তন করা
+if (balanceAmountElement) {
+    balanceAmountElement.style.color = '#2F96F0';
+}
+
+// ব্যালেন্সের লেবেল পরিবর্তন করা
+if (balanceLabelElement) {
+    balanceLabelElement.textContent = 'real balance';
+}
+
+// স্প্যানের লেখার রঙ পরিবর্তন করা
+if (balanceSpanElement) {
+    balanceSpanElement.style.color = '#2F96F0';
+}
